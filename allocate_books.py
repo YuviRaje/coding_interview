@@ -12,27 +12,23 @@ Your function should return an integer corresponding to the minimum number.
 '''
 
 
-def allocate(arr, index, partition):
+def allocate(books, index, partition):
 
     if partition == 0:
-        return sum(arr[index:])
+        return sum(books[index:])
 
-    if index >= len(arr):
-        return float('-inf')
+    best_result = float('inf')
+
+    for i in range(index + 1, len(books)):
+
+        sub_array = books[index: i]
+
+        current_result = max(sum(sub_array), allocate(books, index, partition -1 ))
+
+        best_result = min(best_result, current_result)
 
 
-    best_ans = float('inf')
+    return best_result
 
-    for i in range(index + 1, len(arr)):
-
-        subarray = arr[index: i]
-
-        max_sum_from_next_subarray = allocate(arr, i, partition - 1)
-
-        current_max_sum = max(sum(subarray), max_sum_from_next_subarray)
-
-        best_ans = min(best_ans, current_max_sum)
-
-    return best_ans
 
 
