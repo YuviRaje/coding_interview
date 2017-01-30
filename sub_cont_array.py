@@ -1,6 +1,4 @@
-
 def max_sub_cont(arr):
-
     current_sum = 0
     current_max = 0
 
@@ -15,3 +13,4 @@ def max_sub_cont(arr):
     if current_max == 0:
         return max(arr)
     return current_max
+print 'hello world'

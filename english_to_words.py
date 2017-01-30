@@ -11,8 +11,6 @@ For example,
 
 
 '''
-
-
 def convert_two(number):
     if number == 0:
         return ''
@@ -42,8 +40,6 @@ def convert_three(number):
         return convert_two(number)
     else:
         raise Exception('conver_three() called with number less than hundred')
-
-
 
 
 
