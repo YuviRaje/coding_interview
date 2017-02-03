@@ -1,15 +1,4 @@
 
-'''
-API's include 
-1. append() -> O(n)
-2. append_left() -> O(1)
-3. pop() -> O(n)
-4. pop_left() -> O(1)
-5. print_list() -> O(n)
-Space -> O(n)
-
-'''
-
 class Node:
 	def __init__(self, data):
 		self.data = data
@@ -27,8 +16,8 @@ class LinkedList:
 			self.head = new_node
 		
 		else:
-			while current_node.next != None:
-				current_node = current_node.next
+			while current_node.next:
+				current_node = current_node
 			current_node.next = new_node
 
 	def append_left(self, value):
@@ -43,70 +32,38 @@ class LinkedList:
 
 
 	def pop(self):
-		if self.head == None :
-			raise Exception('Cannt remove from empty list')
 
 		current_node = self.head 
 		prev = None
 		while current_node.next != None:
 			prev = current_node
 			current_node = current_node.next
-		
-		if prev == None:
+		if self.head == None :
+			raise Exception('Cannt remove from empty string')
+		elif prev == None:
 			self.head = None
 		else:
 			prev.next = None 
-
-	def pop_left(self):
+			
+	def reverse(self):
+		prev = None 
 		current_node = self.head
-		if current_node == None:
-			raise Exception('Cant remove from emtry list')
 
-		self.head = self.head.next
+		while current_node:
+			next_node = current_node.next
+			current_node.next = prev 
+			prev = current_node
+			current_node = next_node
+		self.head = prev
 
 	def print_list(self):
-
 		current_node = self.head
 		while current_node:
-			print current_node.data, '- >',
-			current_node = current_node.next 
+			print current_node.data, '->', 
+			current_node = current_node.next
 
-linked_list = LinkedList()
-linked_list.append(1)
-linked_list.append(2)
-linked_list.append_left(0)
-linked_list.pop_left()
+a = LinkedList()
 
-linked_list.pop_left()
-linked_list.print_list()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+a.reverse()
+a.print_list()
 

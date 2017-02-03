@@ -13,8 +13,8 @@ def largest_number(arr):
     return ''.join(map(str,sorted(arr, cmp=compare)))
 
 def compare(x,y):
-    return int(str(y) + str(x)) - int(str(x) + str(y))
+    return  (int(str(y) + str(x))) - (int(str(x) + str(y)))
 
 arr = [3, 30, 34, 5, 9]
 
-print ''.join(map(str,arr))
+print largest_number(arr)

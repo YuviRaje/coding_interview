@@ -1,34 +1,25 @@
 from collections import defaultdict, deque
 
+
 class Graph:
 	def __init__(self):
-		self.nodes = defaultdict(list)
+		self.adj_list = defaultdict(list)
 
-	def add_edge(self, from_node, to_node):
-		self.nodes[from_node].append(to_node)
+	def add_node(self, from_node, to_node):
+		self.adj_list[from_node].append(to_node)
 
+	def depth_first_search(self, source, visited = set()):
 
-	def depth_first_search(self, source, visited = None):
-		if visited == None:
-			visited = set()
-		print source,
+		print source, '->', 
 		visited.add(source)
+		for each_node in self.adj_list[source]:
+			if each_node not in visited:
+				self.depth_first_search(each_node)
 
-		for each_neighbour in self.nodes[source]:
-			if each_neighbour not in visited:
-				self.depth_first_search(each_neighbour, visited)
 
-
-	def breadth_first_search(self, source):
-		visited = set()
-
-		queue = deque([source])
-
-		while len(queue) > 0:
-			popped_node = deque.pop()
-			visited.add(nodes)
-			print nodes
-
-			for each_neighbour in self.nodes[popped_node]:
-				if each_neighbour not in visited:
-					queue.append_left(each_neighbour)
+my_graph = Graph()
+my_graph.add_node(1,2)
+my_graph.add_node(1, 3)
+my_graph.add_node(4,9)
+my_graph.add_node(2,3)
+print my_graph.depth_first_search(1)
