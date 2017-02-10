@@ -55,6 +55,7 @@ class LRU:
 	def _delete_node(self, current_node):
 		if self.front == current_node:
 			self.front = None
+			self.rear = None 
 		else:
 			current_node.prev.next = current_node.next
 			if current_node.next:
@@ -73,8 +74,7 @@ my_lru.set(3,'c')
 my_lru.set(4,'d')
 my_lru.set(5,'e')
 my_lru.set(6,'f')
-
-
+print my_lru.get(4)
 
 
 
